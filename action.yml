@@ -1,0 +1,27 @@
+# .github/workflows/action.yml
+name: Build Linux Container Image and Push to ACR
+description: Action which builds docker file and pushes it to Azure container registry
+author: Zayne Komichi
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./
+    steps:
+    - uses: actions/checkout@v2
+    - uses: azure/docker-login@v1
+      with:
+        login-server: ${{secrets.ACR_SERVER}}
+        username: ${{secrets.ACR_USERNAME}}
+        password: ${{secrets.ACR_PASSWORD}}
+    - run: |
+        docker build . -t ${{secrets.ACR_SERVER}}/image_name:${{github.sha}}
+        docker push ${{secrets.ACR_SERVER}}/image_name:${{github.sha}}
