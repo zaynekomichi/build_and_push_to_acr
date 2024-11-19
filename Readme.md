@@ -13,7 +13,7 @@ Set the following secrets in your github repository, these are your authenticati
 Docker file is assumed to be located in the root folder of the project, you can change this in the action file under the working directory
 
 ````
-working directory: location of the docker file 
+working-directory: location of the docker file 
 ````
 
 Edit where need be!!
