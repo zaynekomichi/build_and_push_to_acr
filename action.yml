@@ -1,5 +1,5 @@
 # .github/workflows/action.yml
-name: Build Linux Container Image and Push to ACR
+name: Build Container Image and Push to ACR
 description: Action which builds docker file and pushes it to Azure container registry
 author: Zayne Komichi
 branding:
